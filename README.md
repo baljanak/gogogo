@@ -1,0 +1,2 @@
+# gogogo
+All things Go.
