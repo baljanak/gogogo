@@ -11,7 +11,8 @@ func ExampleFibonacci() {
 	for i := 0; i < 10; i++ {
 		fmt.Println(f())
 	}
-	// Output: 1
+	// Output:
+	// 1
 	// 2
 	// 3
 	// 5
