@@ -7,7 +7,7 @@ import (
 	"github.com/baljanak/gogogo/fib"
 )
 
-func testFib() {
+func callFib() {
 	f := fib.Fibonacci()
 	for i := 0; i < 50; i++ {
 		fmt.Println(f())
@@ -19,7 +19,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	testFib()
+	callFib()
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
 }
