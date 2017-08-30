@@ -9,7 +9,7 @@ import (
 func ExampleFibonacci() {
 
 	ch := make(chan int, 12)
-	go fib.CallFib(12, ch)
+	go fib.CallFib(ch)
 
 	for i := range ch {
 		fmt.Println(i)

@@ -7,13 +7,12 @@ func fibonacci() func(ch chan int) {
 			x, y = y, x+y
 		}()
 		ch <- x
-		return
 	}
 }
 
-func CallFib(n int, ch chan int) {
+func CallFib(ch chan int) {
 	f := fibonacci()
-	for i := 0; i < n; i++ {
+	for i := 0; i < cap(ch); i++ {
 		f(ch)
 	}
 	close(ch)
