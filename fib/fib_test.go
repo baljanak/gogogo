@@ -8,11 +8,15 @@ import (
 
 func ExampleFibonacci() {
 
-	ch := make(chan int, 12)
-	go fib.CallFib(ch)
+	ch := make(chan int)
 
-	for i := range ch {
-		fmt.Println(i)
+	sig := make(chan int)
+	defer close(sig)
+
+	go fib.CallFib(ch, sig)
+
+	for i := 0; i < 12; i++ {
+		fmt.Println(<-ch)
 	}
 
 	// Output:

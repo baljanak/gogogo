@@ -1,19 +1,24 @@
 package fib
 
-func fibonacci() func(ch chan int) {
+func fibonacci() func(ch, sig chan int) bool {
 	x, y := 0, 1
-	return func(ch chan int) {
-		defer func() {
+	return func(ch, sig chan int) bool {
+		select {
+		case ch <- x:
 			x, y = y, x+y
-		}()
-		ch <- x
+			return true
+		case <-sig:
+			close(ch)
+			return false
+		}
 	}
 }
 
-func CallFib(ch chan int) {
+func CallFib(ch, sig chan int) {
 	f := fibonacci()
-	for i := 0; i < cap(ch); i++ {
-		f(ch)
+	for {
+		if !f(ch, sig) {
+			return
+		}
 	}
-	close(ch)
 }
