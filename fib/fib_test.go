@@ -7,11 +7,17 @@ import (
 )
 
 func ExampleFibonacci() {
-	f := fib.Fibonacci()
-	for i := 0; i < 10; i++ {
-		fmt.Println(f())
+
+	ch := make(chan int, 12)
+	go fib.CallFib(12, ch)
+
+	for i := range ch {
+		fmt.Println(i)
 	}
+
 	// Output:
+	// 0
+	// 1
 	// 1
 	// 2
 	// 3

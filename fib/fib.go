@@ -1,12 +1,20 @@
 package fib
 
-func Fibonacci() func() uint64 {
-	var n1, n2 uint64 = 1, 0
-	return func() uint64 {
+func fibonacci() func(ch chan int) {
+	x, y := 0, 1
+	return func(ch chan int) {
 		defer func() {
-			n1 = n1 + n2
-			n2 = n1 - n2
+			x, y = y, x+y
 		}()
-		return n1 + n2
+		ch <- x
+		return
 	}
+}
+
+func CallFib(n int, ch chan int) {
+	f := fibonacci()
+	for i := 0; i < n; i++ {
+		f(ch)
+	}
+	close(ch)
 }
