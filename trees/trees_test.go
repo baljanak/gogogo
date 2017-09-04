@@ -4,11 +4,10 @@ import (
 	"fmt"
 
 	"github.com/baljanak/gogogo/trees"
-	"golang.org/x/tour/tree"
 )
 
 func ExampleEquivalentTrees() {
-	if trees.Same(tree.New(1), tree.New(2)) {
+	if trees.Same(trees.New(10, 1), trees.New(10, 2)) {
 		fmt.Println("Trees are equivalent")
 	} else {
 		fmt.Println("Trees are different")
