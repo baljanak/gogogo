@@ -2,14 +2,26 @@
 
 
 [[projects]]
+  name = "github.com/ghodss/yaml"
+  packages = ["."]
+  revision = "0ca9ea5df5451ffdf184b4428c902747c2c11cd7"
+  version = "v1.0.0"
+
+[[projects]]
   name = "github.com/julienschmidt/httprouter"
   packages = ["."]
   revision = "8c199fb6259ffc1af525cc3ad52ee60ba8359669"
   version = "v1.1"
 
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "59de32be4f2bbe73f4cedb526c7cc61b1ece6defba7c75990dfbffa4656282ea"
+  inputs-digest = "e43f456291dc79decaeb99316032aaa1473c7e2eb434a38e5b25f3053b519b1b"
   solver-name = "gps-cdcl"
   solver-version = 1
